@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -39,7 +40,15 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         // Add a marker in sabaragamuwa university and move the camera
         LatLng sabra = new LatLng(6.714682, 80.789314);
-        mMap.addMarker(new MarkerOptions().position(sabra).title("Marker in sabragamuwa university"));
+        LatLng sabraAdministrativeArea = new LatLng(6.714028, 80.788647);
+        mMap.addMarker(new MarkerOptions()
+                .position(sabra)
+                .title("Marker in sabragamuwa university"));
+        mMap.addMarker(new MarkerOptions()
+                .position(sabraAdministrativeArea)
+                .title("Administrative area")
+                .snippet("Administrative area")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plusone_small_off_client)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sabra, 15));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
     }
